@@ -13,7 +13,6 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.map.BaiduMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         mLocationClient=new LocationClient(getApplicationContext());
         mLocationClient.registerLocationListener(new MyLocationListener());
-        positionText =(TextView)findViewById(R.id.position_text_view);
+        positionText =findViewById(R.id.position_text_view);
         List<String> permissionList=new ArrayList<>();
         if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
             permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 currentPosition.append("网络");
             }
             positionText.setText(currentPosition);
-            toastShort("您当前位于"+location.getCity()+location.getDistrict());
+            toastShort("已定位："+location.getCity()+location.getDistrict());
         }
     }
     public void toastShort(String msg){
